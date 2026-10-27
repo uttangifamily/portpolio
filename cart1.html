@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>KnowledgeGrove - Book Cart</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+    background-color: whitesmoke;
+}
+.cart-check {
+    display: none;
+}
+header {
+    background-color: #09566A;
+    color: white;
+    padding: 12px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+}
+.search {
+    display: flex;
+    background-color: white;
+    border-radius: 25px;
+    padding: 3px;
+    width: 420px;
+}
+
+.search input {
+    flex: 1;
+    padding: 11px 15px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+}
+
+.search button {
+    background-color: #064858;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 22px;
+}
+nav {
+    background-color: #064858;
+    text-align: center;
+    padding: 8px;
+}
+
+nav a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    margin: 2px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: #09566A;
+}
+.title {
+    text-align: center;
+    padding: 20px;
+    
+}
+.butt{
+    text-align: center;
+    
+    }
+    button{
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+
+.title img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.title h1 {
+    margin: 5px;
+}
+.section {
+    padding: 10px 30px 30px;
+}
+
+.section h2 {
+    color: #09566A;
+    border-bottom: 2px solid #09566A;
+    padding-bottom: 8px;
+}
+.books {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.book {
+    background-color: white;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.book-image {
+    width: 150px;
+    height: 180px;
+    margin: auto;
+    border: 2px solid black;
+    overflow: hidden;
+}
+
+.book-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book h3 {
+    margin: 10px 0 5px;
+}
+
+.book p {
+    margin: 5px;
+}
+
+.price {
+    color: #09566A;
+    font-weight: bold;
+}
+.add-cart {
+    display: inline-block;
+    background-color: #09566A;
+    color: white;
+    padding: 10px 18px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-cart:hover {
+    background-color: #064858;
+}
+.success {
+    display: none;
+    color: green;
+    font-weight: bold;
+}
+#book1:checked ~ .page .success1,
+#book2:checked ~ .page .success2,
+#book3:checked ~ .page .success3,
+#book4:checked ~ .page .success4,
+#book5:checked ~ .page .success5,
+#book6:checked ~ .page .success6,
+#book7:checked ~ .page .success7,
+#book8:checked ~ .page .success8,
+#book9:checked ~ .page .success9,
+#book10:checked ~ .page .success10,
+#book11:checked ~ .page .success11,
+#book12:checked ~ .page .success12,
+#book13:checked ~ .page .success13,
+#book14:checked ~ .page .success14,
+#book15:checked ~ .page .success15,
+#book16:checked ~ .page .success16,
+#book17:checked ~ .page .success17,
+#book18:checked ~ .page .success18,
+#book19:checked ~ .page .success19,
+#book20:checked ~ .page .success20
+
+{
+    display: block;
+}
+#book1:checked ~ .page .btn1,
+#book2:checked ~ .page .btn2,
+#book3:checked ~ .page .btn3,
+#book4:checked ~ .page .btn4,
+#book5:checked ~ .page .btn5,
+#book6:checked ~ .page .btn6,
+#book7:checked ~ .page .btn7,
+#book8:checked ~ .page .btn8,
+#book9:checked ~ .page .btn9,
+#book10:checked ~ .page .btn10,
+#book11:checked ~ .page .btn11,
+#book12:checked ~ .page .btn12,
+#book13:checked ~ .page .btn13,
+#book14:checked ~ .page .btn14,
+#book15:checked ~ .page .btn15,
+#book16:checked ~ .page .btn16,
+#book17:checked ~ .page .btn17,
+#book18:checked ~ .page .btn18,
+#book19:checked ~ .page .btn19,
+#book20:checked ~ .page .btn20
+
+{
+    background-color: green;
+}
+.cart {
+    background-color: white;
+    margin: 30px;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.cart h2 {
+    color: #09566A;
+    border-bottom: 2px solid #09566A;
+    padding-bottom: 10px;
+}
+.cart-book {
+    display: none;
+    align-items: center;
+    gap: 20px;
+    background-color: whitesmoke;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.cart-book img {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.cart-book h3 {
+    margin: 5px 0;
+}
+
+.cart-price {
+    color: #09566A;
+    font-weight: bold;
+}
+#book1:checked ~ .page .cart1,
+#book2:checked ~ .page .cart2,
+#book3:checked ~ .page .cart3,
+#book4:checked ~ .page .cart4,
+#book5:checked ~ .page .cart5,
+#book6:checked ~ .page .cart6,
+#book7:checked ~ .page .cart7,
+#book8:checked ~ .page .cart8,
+#book9:checked ~ .page .cart9,
+#book10:checked ~ .page .cart10,
+#book11:checked ~ .page .cart11,
+#book12:checked ~ .page .cart12,
+#book13:checked ~ .page .cart13,
+#book14:checked ~ .page .cart14,
+#book15:checked ~ .page .cart15,
+#book16:checked ~ .page .cart16,
+#book17:checked ~ .page .cart17,
+#book18:checked ~ .page .cart18,
+#book19:checked ~ .page .cart19,
+#book20:checked ~ .page .cart20
+ {
+    display: flex;
+}
+footer {
+    background-color: #09566A;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+</style>
+</head>
+
+<body>
+<input type="checkbox" id="book1" class="cart-check">
+<input type="checkbox" id="book2" class="cart-check">
+<input type="checkbox" id="book3" class="cart-check">
+<input type="checkbox" id="book4" class="cart-check">
+
+<input type="checkbox" id="book5" class="cart-check">
+<input type="checkbox" id="book6" class="cart-check">
+<input type="checkbox" id="book7" class="cart-check">
+<input type="checkbox" id="book8" class="cart-check">
+
+<input type="checkbox" id="book9" class="cart-check">
+<input type="checkbox" id="book10" class="cart-check">
+<input type="checkbox" id="book11" class="cart-check">
+<input type="checkbox" id="book12" class="cart-check">
+
+<input type="checkbox" id="book13" class="cart-check">
+<input type="checkbox" id="book14" class="cart-check">
+<input type="checkbox" id="book15" class="cart-check">
+<input type="checkbox" id="book16" class="cart-check">
+
+<input type="checkbox" id="book17" class="cart-check">
+<input type="checkbox" id="book18" class="cart-check">
+<input type="checkbox" id="book19" class="cart-check">
+<input type="checkbox" id="book20" class="cart-check">
+
+
+
+<div class="page">
+<header>
+
+<div class="logo">
+    <img src="C:\Users\kamad\Desktop\III\books\logoo.png">
+
+<span>KNOWLEDGEGROVE</span>
+</div>
+
+<div class="search">
+<input type="text"
+placeholder="🔍 Search books...">
+<button>Search</button>
+</div>
+
+</header>
+<nav>
+
+
+<a href="#programming">💻Programming</a>
+<a href="#science">🔬Science</a>
+<a href="#history">⚔️History</a>
+<a href="#gk">📰GK</a>
+<a href="#story">🪄Story</a>
+<a href="#mycart">🛒 My Cart</a>
+
+</nav>
+<div class="title" id="home">
+<img src="C:\Users\kamad\Desktop\III\books\logoo.png">
+<h1>Book Cart</h1>
+</div>
+<div class="section" id="programming">
+
+<h2>💻 Programming Books</h2>
+<p>Learn coding and technology</p>
+
+<div class="books">
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\pgmb1.jpg">
+</div>
+<h3>Java Programming</h3>
+<p>Programming</p>
+<p class="price">₹350</p>
+
+<label for="book1" class="add-cart btn1">
+Add to Cart
+</label>
+
+<p class="success success1">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\pgmb2.jpeg">
+</div>
+<h3>Javascript</h3>
+<p>Programming</p>
+<p class="price">₹300</p>
+
+<label for="book2" class="add-cart btn2">
+Add to Cart
+</label>
+
+<p class="success success2">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\pgmb3.jpg">
+</div>
+<h3>C Programming</h3>
+<p>Programming</p>
+<p class="price">₹400</p>
+
+<label for="book3" class="add-cart btn3">
+Add to Cart
+</label>
+
+<p class="success success3">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\pgmb4.jpg">
+</div>
+<h3>Database Management</h3>
+<p>Programming</p>
+<p class="price">₹380</p>
+
+<label for="book4" class="add-cart btn4">
+Add to Cart
+</label>
+
+<p class="success success4">
+✓ Added to your cart!
+</p>
+</div>
+
+</div>
+</div>
+<div class="section" id="science">
+
+<h2>🔬 Science Books</h2>
+<p>Explore sceince and discovery</p>
+
+<div class="books">
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\sce1.jpg">
+</div>
+<h3>The Science Gene</h3>
+<p>Science</p>
+<p class="price">₹420</p>
+
+<label for="book5" class="add-cart btn5">
+Add to Cart
+</label>
+
+<p class="success success5">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\sce2.jpg">
+</div>
+<h3>Cosmos</h3>
+<p>Science</p>
+<p class="price">₹360</p>
+
+<label for="book6" class="add-cart btn6">
+Add to Cart
+</label>
+
+<p class="success success6">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\sce3.jpg">
+</div>
+<h3>Silent Spring</h3>
+<p>Science</p>
+<p class="price">₹450</p>
+
+<label for="book7" class="add-cart btn7">
+Add to Cart
+</label>
+
+<p class="success success7">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\sce4.jpeg">
+</div>
+<h3>The Gene</h3>
+<p>Science</p>
+<p class="price">₹390</p>
+
+<label for="book8" class="add-cart btn8">
+Add to Cart
+</label>
+
+<p class="success success8">
+✓ Added to your cart!
+</p>
+</div>
+
+</div>
+</div>
+<div class="section" id="history">
+
+<h2>⚔️ History Books</h2>
+<p>Discover stories of the past</p>
+
+<div class="books">
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\history1.jpeg">
+</div>
+<h3>Alchemist</h3>
+<p>History</p>
+<p class="price">₹280</p>
+
+<label for="book9" class="add-cart btn9">
+Add to Cart
+</label>
+
+<p class="success success9">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\history2.jpg">
+</div>
+<h3>Argumentative India</h3>
+<p>History</p>
+<p class="price">₹320</p>
+
+<label for="book10" class="add-cart btn10">
+Add to Cart
+</label>
+
+<p class="success success10">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\history3.jpeg">
+</div>
+<h3>Medieval Indian</h3>
+<p>History</p>
+<p class="price">₹500</p>
+
+<label for="book11" class="add-cart btn11">
+Add to Cart
+</label>
+
+<p class="success success11">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\history4.jpg">
+</div>
+<h3>India After Gandhi</h3>
+<p>History</p>
+<p class="price">₹550</p>
+
+<label for="book12" class="add-cart btn12">
+Add to Cart
+</label>
+
+<p class="success success12">
+✓ Added to your cart!
+</p>
+</div>
+
+</div>
+</div>
+<div class="section" id="gk">
+
+<h2>📰 GK Books</h2>
+<p>Increase your general Knowledge</p>
+
+<div class="books">
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\gk1.webp">
+</div>
+<h3>General Knowledge</h3>
+<p>GK</p>
+<p class="price">₹370</p>
+
+<label for="book13" class="add-cart btn13">
+Add to Cart
+</label>
+
+<p class="success success13">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\gk2.jpeg">
+</div>
+<h3>Reasoning</h3>
+<p>GK</p>
+<p class="price">₹330</p>
+
+<label for="book14" class="add-cart btn14">
+Add to Cart
+</label>
+
+<p class="success success14">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\gk3.jpeg">
+</div>
+<h3>General English</h3>
+<p>GK</p>
+<p class="price">₹480</p>
+
+<label for="book15" class="add-cart btn15">
+Add to Cart
+</label>
+
+<p class="success success15">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\gk4.jpg">
+</div>
+<h3>Static GK Scorer</h3>
+<p>GK</p>
+<p class="price">₹460</p>
+
+<label for="book16" class="add-cart btn16">
+Add to Cart
+</label>
+
+<p class="success success16">
+✓ Added to your cart!
+</p>
+</div>
+
+</div>
+</div>
+<div class="section" id="story">
+
+<h2>🪄 Story Books</h2>
+<p>Enjoy wonderful stories</p>
+
+<div class="books">
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\story1.jpg">
+</div>
+<h3>Moral Story</h3>
+<p>Story</p>
+<p class="price">₹290</p>
+
+<label for="book17" class="add-cart btn17">
+Add to Cart
+</label>
+
+<p class="success success17">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\story2.jpeg">
+</div>
+<h3>Name Jar</h3>
+<p>Story</p>
+<p class="price">₹310</p>
+
+<label for="book18" class="add-cart btn18">
+Add to Cart
+</label>
+
+<p class="success success18">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\story3.jpeg">
+</div>
+<h3>Just Harriet</h3>
+<p>Story</p>
+<p class="price">₹250</p>
+
+<label for="book19" class="add-cart btn19">
+Add to Cart
+</label>
+
+<p class="success success19">
+✓ Added to your cart!
+</p>
+</div>
+
+
+<div class="book">
+<div class="book-image">
+<img src="C:\Users\kamad\Desktop\III\books\story4.jpeg">
+</div>
+<h3>Secret Garden</h3>
+<p>Story</p>
+<p class="price">₹370</p>
+
+<label for="book20" class="add-cart btn20">
+Add to Cart
+</label>
+
+<p class="success success20">
+    ✓ Added to your cart!
+    </p>
+    </div>
+    
+</div>
+</div>
+<div class="cart" id="mycart">
+
+<h2>🛒 My Cart</h2>
+
+<p>Your selected books:</p>
+
+
+<div class="cart-book cart1">
+<img src="C:\Users\kamad\Desktop\III\books\pgmb1.jpg">
+<div>
+<h3>Java Programming</h3>
+<p>Programming</p>
+<p class="cart-price">₹350</p>
+</div>
+</div>
+
+
+<div class="cart-book cart2">
+<img src="C:\Users\kamad\Desktop\III\books\pgmb2.jpeg">
+<div>
+<h3>Javascript</h3>
+<p>Programming</p>
+<p class="cart-price">₹300</p>
+</div>
+</div>
+
+
+<div class="cart-book cart3">
+<img src="C:\Users\kamad\Desktop\III\books\pgmb3.jpg">
+<div>
+<h3>C Programming</h3>
+<p>Programming</p>
+<p class="cart-price">₹400</p>
+</div>
+</div>
+
+
+<div class="cart-book cart4">
+<img src="C:\Users\kamad\Desktop\III\books\pgmb4.jpg">
+<div>
+<h3>Database Management</h3>
+<p>Programming</p>
+<p class="cart-price">₹380</p>
+</div>
+</div>
+
+
+<div class="cart-book cart5">
+<img src="C:\Users\kamad\Desktop\III\books\sce1.jpg">
+<div>
+<h3>The Science Gene</h3>
+<p>Science</p>
+<p class="cart-price">₹420</p>
+</div>
+</div>
+
+
+<div class="cart-book cart6">
+<img src="C:\Users\kamad\Desktop\III\books\sce2.jpg">
+<div>
+<h3>Cosmos</h3>
+<p>Science</p>
+<p class="cart-price">₹360</p>
+</div>
+</div>
+
+
+<div class="cart-book cart7">
+<img src="C:\Users\kamad\Desktop\III\books\sce3.jpg">
+<div>
+<h3>Silent Spring</h3>
+<p>Science</p>
+<p class="cart-price">₹450</p>
+</div>
+</div>
+
+
+<div class="cart-book cart8">
+<img src="C:\Users\kamad\Desktop\III\books\sce4.jpeg">
+<div>
+<h3>Software Engineering</h3>
+<p>Science</p>
+<p class="cart-price">₹390</p>
+</div>
+</div>
+
+
+<div class="cart-book cart9">
+<img src="C:\Users\kamad\Desktop\III\books\history1.jpeg">
+<div>
+<h3>Alchemist</h3>
+<p>History</p>
+<p class="cart-price">₹280</p>
+</div>
+</div>
+
+
+<div class="cart-book cart10">
+<img src="C:\Users\kamad\Desktop\III\books\history2.jpg">
+<div>
+<h3>Argumentative India</h3>
+<p>History</p>
+<p class="cart-price">₹320</p>
+</div>
+</div>
+
+
+<div class="cart-book cart11">
+<img src="C:\Users\kamad\Desktop\III\books\history3.jpeg">
+<div>
+<h3>Medieval Indian</h3>
+<p>History</p>
+<p class="cart-price">₹500</p>
+</div>
+</div>
+
+
+<div class="cart-book cart12">
+<img src="C:\Users\kamad\Desktop\III\books\history4.jpg">
+<div>
+<h3>India After Gandhi</h3>
+<p>History</p>
+<p class="cart-price">₹550</p>
+</div>
+</div>
+
+
+<div class="cart-book cart13">
+<img src="C:\Users\kamad\Desktop\III\books\gk1.webp">
+<div>
+<h3>General Knowledge</h3>
+<p>GK</p>
+<p class="cart-price">₹370</p>
+</div>
+</div>
+
+
+<div class="cart-book cart14">
+<img src="C:\Users\kamad\Desktop\III\books\gk2.jpeg">
+<div>
+<h3>Reasoning</h3>
+<p>GK</p>
+<p class="cart-price">₹330</p>
+</div>
+</div>
+
+
+<div class="cart-book cart15">
+<img src="C:\Users\kamad\Desktop\III\books\gk3.jpeg">
+<div>
+<h3>General English</h3>
+<p>GK</p>
+<p class="cart-price">₹480</p>
+</div>
+</div>
+
+
+<div class="cart-book cart16">
+<img src="C:\Users\kamad\Desktop\III\books\gk4.jpg">
+<div>
+<h3>Static GK Scorer</h3>
+<p>GK</p>
+<p class="cart-price">₹460</p>
+</div>
+</div>
+
+
+<div class="cart-book cart17">
+<img src="C:\Users\kamad\Desktop\III\books\story1.jpg">
+<div>
+<h3>Moral Story</h3>
+<p>Story</p>
+<p class="cart-price">₹290</p>
+</div>
+</div>
+
+
+<div class="cart-book cart18">
+<img src="C:\Users\kamad\Desktop\III\books\story2.jpeg">
+<div>
+<h3>Name Jar</h3>
+<p>Story</p>
+<p class="cart-price">₹310</p>
+</div>
+</div>
+
+
+<div class="cart-book cart19">
+<img src="C:\Users\kamad\Desktop\III\books\story3.jpeg">
+<div>
+<h3>Just Harriet</h3>
+<p>Story</p>
+<p class="cart-price">₹250</p>
+</div>
+</div>
+
+
+<div class="cart-book cart20">
+<img src="C:\Users\kamad\Desktop\III\books\story4.jpeg">
+<div>
+<h3>Secret Garden</h3>
+<p>Story</p>
+<p class="cart-price">₹370</p>
+</div>
+</div>
+
+</div>
+<div class="butt">
+   
+        <a href="about1.html" target="content"><button>↩️ Go back to About</button></a><br><hr>
+        <a href="contect1.html" target="content"><button>Go to contact↪️</button></a><br><hr>
+</div>
+<footer>
+
+📚 KNOWLEDGEGROVE
+
+<br>
+
+Learn • Explore • Discover
+
+<br>
+
+© 2026 All Rights Reserved
+
+</footer>
+
+</div>
+
+</body>
+</html>
